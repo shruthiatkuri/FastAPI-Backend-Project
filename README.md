@@ -34,6 +34,7 @@ pip install -r requirements.txt
 Create a `.env` file in the project root using `.env.example` as a reference.
 
 Add your own values for the required environment variables, such as database connection settings and authentication secrets.
+
 ```bash
 DATABASE_URL=postgresql://database:yourpassword@localhost:5432/databasename
 SECRET_KEY=Add-your-secret-key
