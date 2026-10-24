@@ -8,7 +8,7 @@ A backend application built with FastAPI and PostgreSQL, featuring user authenti
 
 ```bash
 git clone https://github.com/shruthiatkuri/FastAPI_Backend_Project.git
-cd FastAPI_Backend_project
+cd FastAPI-Backend-project
 ```
 
 ### 2. Create and Activate a Virtual Environment
