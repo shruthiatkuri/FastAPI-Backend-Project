@@ -7,8 +7,8 @@ A backend application built with FastAPI and PostgreSQL, featuring user authenti
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/shruthiatkuri/FastAPI_Backend_Project.git
-cd FastAPI_Backend_project
+git clone https://github.com/shruthiatkuri/FastAPI-Backend-Project.git
+cd FastAPI-Backend-project
 ```
 
 ### 2. Create and Activate a Virtual Environment
@@ -34,10 +34,10 @@ pip install -r requirements.txt
 Create a `.env` file in the project root using `.env.example` as a reference.
 
 Add your own values for the required environment variables, such as database connection settings and authentication secrets.
-
+```bash
 DATABASE_URL=postgresql://database:yourpassword@localhost:5432/databasename
-SERET_KEY=Add-your-secret-key
-
+SECRET_KEY=Add-your-secret-key
+```
 
 Ensure PostgreSQL is running and the database is configured before starting the application.
 
