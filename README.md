@@ -7,7 +7,7 @@ A backend application built with FastAPI and PostgreSQL, featuring user authenti
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/shruthiatkuri/FastAPI_Backend_Project.git
+git clone https://github.com/shruthiatkuri/FastAPI-Backend-Project.git
 cd FastAPI-Backend-project
 ```
 
