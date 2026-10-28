@@ -7,6 +7,11 @@ from collections.abc import Generator
 
 
 def get_db()->Generator[Session, None, None]:
+    """Provide a database session and close it after use.
+
+    Yields:
+        Session: An SQLAlchemy database session for executing queries.
+    """
     db= SessionLocal()
     try:
         yield db
