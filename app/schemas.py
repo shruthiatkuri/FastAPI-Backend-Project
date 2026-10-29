@@ -20,4 +20,4 @@ class OrderOut(BaseModel):
     quantity: int
     status: str
     created_at: datetime
-    
+

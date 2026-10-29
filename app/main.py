@@ -135,7 +135,7 @@ def login(form:OAuth2PasswordRequestForm= Depends(), db: Session= Depends(get_db
         )
     token= create_access_token(user.id)
     return {"access_token": token, "token_type":"bearer"}
-    
+
 
 
 @app.get("/me")
@@ -198,11 +198,11 @@ def create_order(payload:OrderCreate,
     description="Retrieve orders. Regular users can view only their own orders. Admins can view all users' orders.",
 )
 def list_orders(
-    user_id: int | None = Query(None, description="Filter orders by user ID. Admins only need this to view a specific user's orders.", example=88),
+    user_id: int | None = Query(None, description="Filter orders by user ID. Admins only need this to view a specific user's orders."),
     status: str | None = Query(None, description="Filter orders by status, for example: pending."),
     product_id: int | None = Query(None, description="Filter orders by product ID, for example: 78."),
     skip: int = Query(0, ge=0, description="Number of orders to skip. Default: 0."),
-    limit: int = Query(20, ge=1, le=100, description="Maximum number of orders to return (1–100). Default: 20.", example=20),
+    limit: int = Query(20, ge=1, le=100, description="Maximum number of orders to return (1–100). Default: 20."),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
