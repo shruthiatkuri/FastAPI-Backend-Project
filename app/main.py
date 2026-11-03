@@ -448,5 +448,8 @@ def get_product_id(
         )
     return product
 
+@app.get("/test")
+def test():
+    return {'message':'Hello,world!'}
 
     
