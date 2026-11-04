@@ -1,7 +1,9 @@
 from datetime import datetime
 
-from sqlalchemy import DateTime, ForeignKey, Integer, String, Numeric, func
+from sqlalchemy import DateTime, ForeignKey, Integer, String, Numeric, text, func
 from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.dialects.postgresql import JSONB
+from pgvector.sqlalchemy import VECTOR
 
 from app.database import Base
 
@@ -45,3 +47,14 @@ class Order(Base):
     quantity: Mapped[int]= mapped_column(Integer, nullable=False, default=1)
     status: Mapped[str]= mapped_column(String, nullable=False, default="pending")
     created_at: Mapped[datetime]= mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now(),)
+
+class Document(Base):
+    __tablename__= "documents"
+
+    id: Mapped[int]= mapped_column(Integer, primary_key= True)
+    title: Mapped[str]=mapped_column(String, nullable=False)
+    content: Mapped[str]= mapped_column(String, nullable=False)
+    source: Mapped[str]= mapped_column(String)
+    matadata: Mapped[dict]= mapped_column("metadata",JSONB, nullable=False, server_default=text("'{}'::jsonb"))
+    embedding: Mapped[list[float]]= mapped_column(VECTOR(1536))
+    created_at: Mapped[datetime]= mapped_column(DateTime(timezone=True),nullable=False, server_default=func.now(),)

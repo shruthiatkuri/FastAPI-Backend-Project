@@ -1,7 +1,7 @@
 from fastapi import Depends,FastAPI,Form, HTTPException, Response, Query, status
 from sqlalchemy.orm import Session
 from app.database import get_db
-from app.models import Order,Product, User
+from app.models import Order,Product, User, Document
 from app.schemas import OrderCreate, OrderOut, OrderUpdate
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from app.auth import (
@@ -452,4 +452,36 @@ def get_product_id(
 def test():
     return {'message':'Hello,world!'}
 
-    
+
+@app.get("/documents/{document_id}")
+def get_document(
+    document_id: int,
+    db:Session= Depends(get_db),
+    current_user: User= Depends(get_current_user)
+    ):
+    """
+    Retrieve a document by its ID.
+
+    Args:
+        document_id (int): The ID of the document to retrieve.
+        db (Session): The database session.
+        current_user (User): The currently authenticated user.
+
+    Returns:
+        Document: The requested document.
+
+    Raises:
+        HTTPException: 404 if the document does not exist.
+    """
+
+    document=db.get(Document, document_id)
+
+    if document is None:
+        raise HTTPException(
+            status_code=404,
+            detail="document not found"
+        )
+    return document
+
+
+
