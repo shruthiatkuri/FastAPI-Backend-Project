@@ -12,6 +12,9 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+      
+    ports:
+      - "5432:5432"
 
   api:
     build: .
@@ -20,9 +23,20 @@ services:
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       SECRET_KEY: ${SECRET_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
     depends_on:
       db:
         condition: service_healthy
+  
+  streamlit:
+    build: .
+    command: ["streamlit", "run", "streamlit_app.py", "--server.address=0.0.0.0", "--server.port=8501"]
+    ports:
+      - "8501:8501"
+    environment:
+      API_URL: http://api:8000/ask
+    depends_on:
+      - api
 
 volumes:
   orders_data:

@@ -14,8 +14,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the application code
 COPY ./app ./app
 
+# Copy Streamlit frontend
+copy ./streamlit_app.py ./streamlit_app.py 
+
 # The port uvicorn will listen on
 EXPOSE 8000
+EXPOSE 8501
 
 # Start the API server
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

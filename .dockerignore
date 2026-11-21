@@ -9,3 +9,8 @@ __pycache__/
 README.md
 tests/
 *.dump
+corpus/
+deployment-assets/
+DEPLOY.md
+eval.py
+test_api.http
