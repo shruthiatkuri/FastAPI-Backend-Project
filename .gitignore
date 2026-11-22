@@ -12,6 +12,8 @@ __pycache__/
 *.dump
 corpus/
 test_api.http
+README_RAG.md
+
 
 
 
