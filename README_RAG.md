@@ -210,7 +210,7 @@ The following video demonstrates the end-to-end RAG pipeline running on a remote
 
 http://43.202.215.135:8501/ask
 
-[Watch RAG Pipeline Demo](rag_assets/rag-demo.mp4)
+[Watch RAG Pipeline Demo](https://drive.google.com/file/d/1Iss0Iv6bH0mXX0yspVhkZX6mtfN7UnMb/view?usp=sharing)
 
 ## 10. Technology Stack
 
